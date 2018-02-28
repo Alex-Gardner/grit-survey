@@ -31,35 +31,34 @@ import { Link } from 'react-router-dom';
 //   };
 // }
 
-// toDo: render 10 makePage components efficiently. Route them each to their own page
-
 const range = (start, end) =>
-  Array.from({ length: end - start + 1 }, (x, i) => i + start);
+	Array.from({ length: end - start + 1 }, (x, i) => i + start);
 
+//  args is a reusable array from 1..10
 const args = range(1, 10);
 
 const Pages = args.map(function(pageNumber) {
-  let index = pageNumber - 1;
-  return props => {
-    return (
-      <div className="question-container">
-        <h2>
-          {gritQuestions[index].text}
-        </h2>
-        <InputSelection />
-      </div>
-    );
-  };
+	let index = pageNumber - 1;
+	return props => {
+		return (
+			<div className="question-container">
+				<h2>
+					{gritQuestions[index].text}
+				</h2>
+				<InputSelection />
+			</div>
+		);
+	};
 });
 
 const navList = args.map(number => {
-  return (
-    <li>
-      <Link to={`q${number}`}>
-        Q.{number}
-      </Link>
-    </li>
-  );
+	return (
+		<li>
+			<Link to={`q${number}`}>
+				Q.{number}
+			</Link>
+		</li>
+	);
 });
 
 export { Pages, navList };
